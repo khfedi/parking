@@ -42,20 +42,7 @@ main (int argc, char *argv[])
    */
   EspaceReclamation = create_EspaceReclamation ();
   gtk_widget_show (EspaceReclamation);
-  GestionR = create_GestionR ();
-  gtk_widget_show (GestionR);
-  ModificationR = create_ModificationR ();
-  gtk_widget_show (ModificationR);
-  Modificationun_rec = create_Modificationun_rec ();
-  gtk_widget_show (Modificationun_rec);
-  AjouterRec = create_AjouterRec ();
-  gtk_widget_show (AjouterRec);
-  SuppRec = create_SuppRec ();
-  gtk_widget_show (SuppRec);
-  AssurerSuppRec = create_AssurerSuppRec ();
-  gtk_widget_show (AssurerSuppRec);
-  Affichagelisteparking = create_Affichagelisteparking ();
-  gtk_widget_show (Affichagelisteparking);
+
 
   gtk_main ();
   return 0;

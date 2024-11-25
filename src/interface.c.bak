@@ -795,7 +795,7 @@ create_AjouterRec (void)
   gtk_widget_show (entry_descA);
   gtk_fixed_put (GTK_FIXED (fixed130), entry_descA, 224, 328);
   gtk_widget_set_size_request (entry_descA, 376, 112);
-  gtk_entry_set_max_length (GTK_ENTRY (entry_descA), 300);
+  gtk_entry_set_max_length (GTK_ENTRY (entry_descA), 8);
   gtk_entry_set_invisible_char (GTK_ENTRY (entry_descA), 8226);
 
   label254 = gtk_label_new ("");

@@ -11,7 +11,8 @@ parking_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
-	callbacks.c callbacks.h
+	callbacks.c callbacks.h \
+	rec.c rec.h 
 
 parking_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 
