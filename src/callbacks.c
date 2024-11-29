@@ -30,7 +30,13 @@ void
 on_APT_clicked                         (GtkButton       *button,
                                         gpointer         user_data)
 {
+	GtkWidget *Affichagelisteparking,*EspaceReclamation ;
 
+
+	EspaceReclamation=lookup_widget(button,"EspaceReclamation");
+	gtk_widget_destroy(EspaceReclamation);
+	Affichagelisteparking=create_Affichagelisteparking();
+	gtk_widget_show(Affichagelisteparking);
 }
 
 
@@ -48,7 +54,13 @@ void
 on_button_M_clicked                    (GtkButton       *button,
                                         gpointer         user_data)
 {
+	GtkWidget *ModificationR,*GestionR;
 
+
+	GestionR=lookup_widget(button,"GestionR");
+	gtk_widget_destroy(GestionR);
+	ModificationR=create_ModificationR();
+	gtk_widget_show(ModificationR); 
 }
 
 
@@ -56,7 +68,13 @@ void
 on_button_Supp_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
+	GtkWidget *SuppRec,*GestionR;
 
+
+	GestionR=lookup_widget(button,"GestionR");
+	gtk_widget_destroy(GestionR);
+	SuppRec=create_SuppRec();
+	gtk_widget_show(SuppRec); 
 }
 
 
@@ -87,7 +105,11 @@ void
 on_home1_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *EspaceReclamation,*GestionR ;
+	GestionR=lookup_widget(button,"GestionR");
+	gtk_widget_destroy(GestionR);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation);
 }
 
 
@@ -96,6 +118,11 @@ on_return1_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+	GtkWidget *EspaceReclamation,*GestionR ;
+	GestionR=lookup_widget(button,"GestionR");
+	gtk_widget_destroy(GestionR);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation); 
 }
 
 
@@ -103,7 +130,11 @@ void
 on_return2_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *GestionR,*ModificationR;
+	ModificationR=lookup_widget(button,"ModificationR");
+	gtk_widget_destroy(ModificationR);
+	GestionR=create_GestionR();
+	gtk_widget_show(GestionR);
 }
 
 
@@ -111,7 +142,11 @@ void
 on_home2_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *EspaceReclamation,*ModificationR;
+	ModificationR=lookup_widget(button,"ModificationR");
+	gtk_widget_destroy(ModificationR);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation); 
 }
 
 
@@ -127,7 +162,11 @@ void
 on_return3_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *ModificationR,*Modificationunrec;
+	Modificationunrec=lookup_widget(button,"Modificationunrec");
+	gtk_widget_destroy(Modificationunrec);
+	ModificationR=create_ModificationR();
+	gtk_widget_show(ModificationR);
 }
 
 
@@ -135,8 +174,13 @@ void
 on_home3_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *EspaceReclamation,*Modificationunrec;
+	Modificationunrec=lookup_widget(button,"Modificationunrec");
+	gtk_widget_destroy(Modificationunrec);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation); 
 }
+
 
 
 void
@@ -167,7 +211,11 @@ void
 on_home4_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *EspaceReclamation,*AjouterRec;
+	AjouterRec=lookup_widget(button,"AjouterRec");
+	gtk_widget_destroy(AjouterRec);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation);
 }
 
 
@@ -175,7 +223,11 @@ void
 on_return4_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *GestionR,*AjouterRec;
+	AjouterRec=lookup_widget(button,"AjouterRec");
+	gtk_widget_destroy(AjouterRec);
+	GestionR=create_GestionR();
+	gtk_widget_show(GestionR); 
 }
 
 
@@ -245,7 +297,11 @@ void
 on_home5_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *EspaceReclamation,*SuppRec;
+	SuppRec=lookup_widget(button,"SuppRec");
+	gtk_widget_destroy(SuppRec);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation); 
 }
 
 
@@ -254,6 +310,11 @@ on_return5_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+	GtkWidget *GestionR,*SuppRec;
+	SuppRec=lookup_widget(button,"SuppRec");
+	gtk_widget_destroy(SuppRec);
+	GestionR=create_GestionR();
+	gtk_widget_show(GestionR);
 }
 
 
@@ -269,7 +330,11 @@ void
 on_return6_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *AssurerSuppRec,*SuppRec;
+	AssurerSuppRec=lookup_widget(button,"AssurerSuppRec");
+	gtk_widget_destroy(AssurerSuppRec);
+	SuppRec=create_SuppRec();
+	gtk_widget_show(SuppRec); 
 }
 
 
@@ -293,7 +358,11 @@ void
 on_home6_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *AssurerSuppRec,*EspaceReclamation;
+	AssurerSuppRec=lookup_widget(button,"AssurerSuppRec");
+	gtk_widget_destroy(AssurerSuppRec);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation);
 }
 
 
@@ -312,7 +381,11 @@ void
 on_return7_clicked                     (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+  	GtkWidget *Affichagelisteparking,*EspaceReclamation ;
+	Affichagelisteparking=lookup_widget(button,"Affichagelisteparking");
+	gtk_widget_destroy(Affichagelisteparking);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation);
 }
 
 
@@ -320,7 +393,11 @@ void
 on_home7_clicked                       (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+	GtkWidget *Affichagelisteparking,*EspaceReclamation ;
+	Affichagelisteparking=lookup_widget(button,"Affichagelisteparking");
+	gtk_widget_destroy(Affichagelisteparking);
+	EspaceReclamation=create_EspaceReclamation();
+	gtk_widget_show(EspaceReclamation);
 }
 
 

@@ -8,31 +8,39 @@
 
 int ajouter(char *filename, rec d, int choix[], char ch[])
 {
-    
 
-    FILE *f = fopen(filename, "a+");
+    for (int i = 0; d.tel[i] != '\0'; i++) {
+    if (d.tel[i] < '0' || d.tel[i] > '9') { 
+        return 0;
+    }
+}
+        if (strlen(d.tel) != 8) {
+	return 0;
+    }
+
+    FILE *f = fopen(filename, "a+");  
     if (f != NULL)
     {
-	char tempch[200];
-    strcpy(ch, "");
-    if (choix[0] == 1)
-        strcat(ch, "/Problème_de_paiement/");
-    if (choix[1] == 1)
-        strcat(ch, "/Problème_avec_le_service_client/");
-    if (choix[2] == 1)
-        strcat(ch, "/Dommages_au_véhicule/");
-    if (choix[3] == 1)
-        strcat(ch, "/Autre/");
+        strcpy(ch, "");  
+        if (choix[0] == 1)
+            strcat(ch, "/Problème_de_paiement/");
+        if (choix[1] == 1)
+            strcat(ch, "/Problème_avec_le_service_client/");
+        if (choix[2] == 1)
+            strcat(ch, "/Dommages_au_véhicule/");
+        if (choix[3] == 1)
+            strcat(ch, "/Autre/");
 
         for (int i = 0; d.desc[i] != '\0'; i++) {
-        if (d.desc[i] == ' ') {
-            d.desc[i] = '_';
+            if (d.desc[i] == ' ') {
+                d.desc[i] = '_';
+            }
         }
-        }
+
         int lastRecid = 0;
         rec temp;
 
-        while (fscanf(f, "%d %d %d %d %s %s %s %s %s\n", &temp.recid, &temp.date.jour, &temp.date.mois, &temp.date.annee, temp.tel, temp.idpark, temp.avis, temp.desc, tempch) != EOF)
+        while (fscanf(f, "%d %d %d %d %s %s %s %s %s\n", &temp.recid, &temp.date.jour, &temp.date.mois, &temp.date.annee, temp.tel, temp.idpark, temp.avis, temp.desc, ch) != EOF)
         {
             if (temp.recid > lastRecid)
                 lastRecid = temp.recid;
