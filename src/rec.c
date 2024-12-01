@@ -56,6 +56,21 @@ int ajouter(char *filename, rec d, int choix[], char ch[])
         return 0;
 }
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int pull( int recid,char tel[9]){
+   FILE *f = fopen("add.txt", "r");
+    if (f != NULL)
+    {
+        fscanf(f, "%d",&recid);
+        fclose(f);
+    }
+	remove("add.txt");
+	return recid;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void add( int recid,char tel[9]){

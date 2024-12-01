@@ -33,6 +33,6 @@ int modifier( char *, char*,int, rec,char cha[] ,char ch[],int choix2[]);
 int supprimer(char *, char* ,int,char ch[]);
 rec chercher(char *, char*,int,char ch[]);
 void afficherListeTrieeParAvis( char *filename);
-
-
+void add( int ,char tel[]);
+int pull( int ,char tel[]);
 #endif // POINT_H_INCLUDED

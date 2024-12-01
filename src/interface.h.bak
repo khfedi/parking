@@ -5,7 +5,7 @@
 GtkWidget* create_EspaceReclamation (void);
 GtkWidget* create_GestionR (void);
 GtkWidget* create_ModificationR (void);
-GtkWidget* create_Modificationun_rec (void);
+GtkWidget* create_Modificationunrec (void);
 GtkWidget* create_AjouterRec (void);
 GtkWidget* create_SuppRec (void);
 GtkWidget* create_AssurerSuppRec (void);

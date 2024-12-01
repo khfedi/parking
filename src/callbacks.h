@@ -157,3 +157,15 @@ on_checkbutton6_rec_A_toggled          (GtkToggleButton *togglebutton,
 void
 on_checkbutton8_rec_A_toggled          (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
+
+void
+on_checkbutton3_rec_mod_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton4_rec_mod_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_button52_bb_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);

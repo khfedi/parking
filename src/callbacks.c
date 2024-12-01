@@ -9,8 +9,10 @@
 #include "support.h"
 #include"rec.h"
 
-char ch[5000]="";
+int supp=1;
 int choix[4]={0,0,0,0};
+int choix2[4]={0,0,0,0};
+char ch[500]="",cha[500]="";
 void
 on_button_GR_clicked                   (GtkButton       *button,
                                         gpointer         user_data)
@@ -208,6 +210,63 @@ void
 on_button_Cmod_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
+    char vide[2] = "";
+int a;
+char tel[9];int recid;
+rec v;
+recid=pull(recid,tel[9]);
+
+GtkWidget *input1, *input2, *input3, *input4, *input5 , *input6, *input7;
+GtkWidget *GestionR,*Modificationunrec;
+
+GtkWidget *ch1,*ch2,*ch3,*ch4;
+
+Modificationunrec=lookup_widget(button,"Modificationunrec");
+
+    input1 = lookup_widget(button, "combobox1_idM");
+    input2 = lookup_widget(button, "entry4_nMMM");
+    input3 = lookup_widget(button, "spinbutton5_ff");
+    input4 = lookup_widget(button, "spinbutton6_yy");
+    input5 = lookup_widget(button, "spinbutton9_uu");
+input6 = lookup_widget(button, "combobox2_AMM");	
+input7 = lookup_widget(button, "entry1_descnew");	
+
+ch1=lookup_widget(button,"checkbutton1_rec_mod");
+ch2=lookup_widget(button,"checkbutton2_rec_mod");
+ch3=lookup_widget(button,"checkbutton3_rec_mod");
+ch4=lookup_widget(button,"checkbutton4_rec_mod");
+
+
+	strcpy(v.desc,gtk_entry_get_text(GTK_ENTRY(input7)));
+	v.date.jour=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (input3));
+	v.date.mois=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (input4));
+	v.date.annee=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (input5));
+	strcpy(v.avis,gtk_combo_box_get_active_text(GTK_COMBO_BOX (input6)));
+	strcpy(v.idpark,gtk_combo_box_get_active_text(GTK_COMBO_BOX (input1)));
+	strcpy(v.tel,gtk_entry_get_text(GTK_ENTRY(input2)));
+
+
+
+         a=modifier("reclamations.txt", tel,recid,v,cha,ch,choix2);
+       if(a==1){
+    choix2[0]=0;
+    choix2[1]=0;
+    choix2[2]=0;
+    choix2[3]=0;
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(input4), 1);
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(input5), 1);
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(input3), 1);
+                gtk_entry_set_text(GTK_ENTRY(input7), vide);
+                gtk_combo_box_set_active(GTK_COMBO_BOX (input1),0);
+                gtk_combo_box_set_active(GTK_COMBO_BOX (input6),0);
+                gtk_entry_set_text(GTK_ENTRY(input2), vide);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch1),FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch2),FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch3),FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch4),FALSE);
+    
+    }
+		
 
 }
 
@@ -216,7 +275,9 @@ void
 on_checkbutton2_rdv_mod_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+if(gtk_toggle_button_get_active(togglebutton)){
+choix2[1]=1;
+}
 }
 
 
@@ -224,7 +285,9 @@ void
 on_checkbutton1_rdv_mod_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+if(gtk_toggle_button_get_active(togglebutton)){
+choix2[0]=1;
+}
 }
 
 
@@ -344,6 +407,32 @@ on_button_supp1_clicked                (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+
+char vide[2] = "";
+rec r;
+char tel[9];int recid;
+GtkWidget *input1,*input2;
+GtkWidget *AssurerSuppRec;
+GtkWidget *SuppRec;
+
+SuppRec=lookup_widget(button,"SuppRec");
+input1=lookup_widget(button,"entry3_teltel");
+    input2 = lookup_widget(button, "spinbutton8_oo");
+
+
+
+strcpy(tel,gtk_entry_get_text(GTK_ENTRY(input1)));
+ recid = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (input2));
+ r = chercher("reclamations.txt", tel,recid,ch);
+if(strcmp(r.tel,"-1")!=0){
+     AssurerSuppRec=create_AssurerSuppRec();
+    gtk_widget_show(AssurerSuppRec);
+add(recid,tel);
+}
+
+
+
+
 }
 
 
@@ -363,7 +452,9 @@ void
 on_radiobutton_A_toggled               (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON(togglebutton))){
+supp = 2;
+}
 }
 
 
@@ -371,7 +462,9 @@ void
 on_radiobutton_supp_toggled            (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-
+if(gtk_toggle_button_get_active(GTK_RADIO_BUTTON(togglebutton))){
+supp = 1;
+}
 }
 
 
@@ -459,5 +552,40 @@ on_checkbutton8_rec_A_toggled          (GtkToggleButton *togglebutton,
 if(gtk_toggle_button_get_active(togglebutton)){
 choix[3]=1;
 }
+}
+
+
+void
+on_checkbutton3_rec_mod_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if(gtk_toggle_button_get_active(togglebutton)){
+choix2[2]=1;}
+}
+
+
+void
+on_checkbutton4_rec_mod_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if(gtk_toggle_button_get_active(togglebutton)){
+choix2[3]=1;}
+}
+
+
+void
+on_button52_bb_clicked                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+	GtkWidget *AssurerSuppRec;
+	GtkWidget *SuppRec;
+	char tel[9];int recid;
+	recid=pull(recid,tel[9]);
+	if(supp==1){
+	supprimer("reclamations.txt",tel[9],recid,ch);}
+	AssurerSuppRec=lookup_widget(button,"AssurerSuppRec");
+	gtk_widget_destroy(AssurerSuppRec);
+	supp =1;
+
 }
 
