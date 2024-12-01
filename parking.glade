@@ -871,7 +871,7 @@
       </child>
 
       <child>
-	<widget class="GtkSpinButton" id="spinbutton7">
+	<widget class="GtkSpinButton" id="spinbutton9_idMM">
 	  <property name="width_request">60</property>
 	  <property name="height_request">27</property>
 	  <property name="visible">True</property>
@@ -917,7 +917,7 @@
       </child>
 
       <child>
-	<widget class="GtkEntry" id="entry5">
+	<widget class="GtkEntry" id="entry5_nM">
 	  <property name="width_request">160</property>
 	  <property name="height_request">27</property>
 	  <property name="visible">True</property>
@@ -991,7 +991,7 @@
   </child>
 </widget>
 
-<widget class="GtkWindow" id="Modificationun rec">
+<widget class="GtkWindow" id="Modificationunrec">
   <property name="visible">True</property>
   <property name="title" translatable="yes">Modification d'un reclamation</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
@@ -1411,28 +1411,6 @@
       </child>
 
       <child>
-	<widget class="GtkComboBoxEntry" id="comboboxentry4">
-	  <property name="width_request">189</property>
-	  <property name="height_request">29</property>
-	  <property name="visible">True</property>
-	  <property name="items" translatable="yes">
-
-1
-2
-3
-4
-5</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="has_frame">True</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">232</property>
-	  <property name="y">264</property>
-	</packing>
-      </child>
-
-      <child>
 	<widget class="GtkLabel" id="label328">
 	  <property name="width_request">189</property>
 	  <property name="height_request">29</property>
@@ -1455,28 +1433,6 @@
 	<packing>
 	  <property name="x">440</property>
 	  <property name="y">264</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkComboBoxEntry" id="comboboxentry11">
-	  <property name="width_request">189</property>
-	  <property name="height_request">29</property>
-	  <property name="visible">True</property>
-	  <property name="items" translatable="yes">
-
-123
-124
-125
-126
-127</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="has_frame">True</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">232</property>
-	  <property name="y">120</property>
 	</packing>
       </child>
 
@@ -1607,6 +1563,50 @@
 	<packing>
 	  <property name="x">48</property>
 	  <property name="y">432</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBox" id="combobox1_idM">
+	  <property name="width_request">184</property>
+	  <property name="height_request">32</property>
+	  <property name="visible">True</property>
+	  <property name="items" translatable="yes">
+1
+2
+3
+4
+5
+6
+7
+8
+9</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">232</property>
+	  <property name="y">120</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBox" id="combobox2_AMM">
+	  <property name="width_request">176</property>
+	  <property name="height_request">32</property>
+	  <property name="visible">True</property>
+	  <property name="items" translatable="yes">
+1
+2
+3
+4
+5</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">240</property>
+	  <property name="y">264</property>
 	</packing>
       </child>
     </widget>

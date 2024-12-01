@@ -58,6 +58,17 @@ int ajouter(char *filename, rec d, int choix[], char ch[])
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void add( int recid,char tel[9]){
+   FILE *f = fopen("add.txt", "w");
+    if (f != NULL)
+    {
+        fprintf(f, "%d",recid);
+        fclose(f); 
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 int modifier(char *filename, char tel[], int recid, rec nouv, char cha[], char ch[], int choix2[])
 {
     

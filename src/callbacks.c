@@ -154,9 +154,30 @@ void
 on_button_rmod_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
+	GtkWidget *ModificationR ,*Modificationunrec;
+	GtkWidget *input1, *input2;
 
+	char vide[2] = "";
+
+	
+	char tel[9];int recid;
+	rec r;
+
+	ModificationR=lookup_widget(button,"ModificationR");
+	input1 = lookup_widget(button, "entry5_nM");
+        input2 = lookup_widget(button, "spinbutton9_idMM");
+
+	strcpy(tel,gtk_entry_get_text(GTK_ENTRY(input1)));
+	 recid =gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (input2));
+
+	 r = chercher("reclamations.txt", tel,recid,ch);
+	if(strcmp(r.tel,"-1")!=0){
+	add(recid,tel);
+ 	    Modificationunrec=create_Modificationunrec();
+	    gtk_widget_show(Modificationunrec);
+		gtk_widget_destroy(ModificationR);
 }
-
+ }
 
 void
 on_return3_clicked                     (GtkButton       *button,
