@@ -1,7 +1,8 @@
 #ifndef POINT_H_INCLUDED
 #define POINT_H_INCLUDED
 #include <stdio.h>
-
+#include <ctype.h>
+#include <gtk/gtk.h>
 
 
 typedef struct
@@ -35,4 +36,6 @@ rec chercher(char *, char*,int,char ch[]);
 void afficherListeTrieeParAvis( char *filename);
 void add( int ,char tel[]);
 int pull( int ,char tel[]);
+void supprimer_tre(rec,char ch[]);
+void afficher_rec (GtkWidget *liste,char ch[]);
 #endif // POINT_H_INCLUDED

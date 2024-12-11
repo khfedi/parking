@@ -48,7 +48,36 @@ on_historique_R_row_activated          (GtkTreeView     *treeview,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data)
 {
+GtkTreeIter iter;
+	gint* recid;
+	gint* jour;
+	gint* mois;
+	gint* annee;
+	gchar* tel;
+	gchar* idpark;	
+	gchar* avis;
+	gchar* desc;
 
+	
+	
+	rec r;
+	GtkTreeModel *model = gtk_tree_view_get_model (treeview) ;
+
+	if (gtk_tree_model_get_iter(model, &iter, path) ){
+
+		gtk_tree_model_get(GTK_LIST_STORE(model), &iter, 0, &recid, 1, &jour, 2,&mois,3,&annee,4,&tel,5,&idpark,6,&avis,7,&desc,-1);
+		r.recid = recid;
+		r.date.jour = jour;
+		r.date.mois = mois;
+		r.date.annee = annee;
+		strcpy(r.tel,tel) ;
+		strcpy(r.idpark,idpark);
+		strcpy(r.avis,avis) ;
+		strcpy(r.desc,desc) ;
+
+		supprimer_tre(r,ch);
+		afficher_rec(treeview,ch) ;
+}
 }
 
 
@@ -84,7 +113,10 @@ void
 on_button1_hist_r_gest_clicked         (GtkButton       *button,
                                         gpointer         user_data)
 {
-
+GtkWidget *GestionR,*historique_R;
+	GestionR = lookup_widget(button,"GestionR");
+	historique_R=lookup_widget(GestionR,"historique_R");
+	 afficher_rec (historique_R,ch);
 }
 
 

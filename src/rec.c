@@ -1,8 +1,21 @@
 #include "rec.h"
 #include<string.h>
 #include <stdio.h>
+#include <gtk/gtk.h>
 #include <stdlib.h>
+#include <config.h>
 #define MAX_PARKINGS 1000
+enum{
+	ERECID ,
+	EJOUR ,
+	EMOIS ,
+	EANNEE, 
+	ETEL,
+	EIDPARK,
+	EAVIS,
+	EDESC,
+	COLUMNS,
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -261,4 +274,118 @@ void afficherListeTrieeParAvis(char *filename) {
 
 }
 
+
+
+
+void afficher_rec (GtkWidget *liste,char ch[]){
+	GtkCellRenderer *renderer;
+	GtkTreeViewColumn *column;
+	GtkTreeIter iter ;
+	GtkListStore *store;
+    	
+
+	int recid; 
+    	int jour;  
+   	int mois;  
+    	int annee; 
+    	char tel[9] , idpark[5];
+    	char avis[2];
+    	char desc[300];
+	store =NULL;
+
+
+	FILE *f;
+	store=gtk_tree_view_get_model(liste);
+	if (store==NULL){
+		renderer = gtk_cell_renderer_text_new ();
+		column =gtk_tree_view_column_new_with_attributes("ID ",renderer,"text",ERECID,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("jour",renderer,"text",EJOUR,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("mois",renderer,"text",EMOIS,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column =gtk_tree_view_column_new_with_attributes("annee",renderer,"text",EANNEE,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("tel",renderer,"text",ETEL,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("id park",renderer,"text",EIDPARK,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("avis",renderer,"text",EAVIS,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+		renderer = gtk_cell_renderer_text_new ();
+		column =gtk_tree_view_column_new_with_attributes("description",renderer,"text",EDESC,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+	
+
+	
+	}
+	store=gtk_list_store_new (COLUMNS ,G_TYPE_INT,G_TYPE_INT,G_TYPE_INT,G_TYPE_INT,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING ,G_TYPE_STRING);
+	f=fopen("reclamations.txt", "r");
+	if (f==NULL){
+		return;
+	}
+	else {
+		f=fopen("reclamations.txt", "a+");
+		while (fscanf(f,"%d %d %d %d %s %s %s %s %s\n",&recid, &jour, &mois, &annee,tel,idpark,avis,desc,ch)!=EOF){
+
+			gtk_list_store_append(store,&iter);
+			gtk_list_store_set(store ,&iter ,ERECID ,recid ,EJOUR, jour ,EMOIS,mois,EANNEE ,annee ,ETEL, tel ,EIDPARK,idpark,EAVIS,avis,EDESC,desc,-1);
+	}
+		fclose(f);
+		gtk_tree_view_set_model(GTK_TREE_VIEW(liste),GTK_TREE_MODEL(store));
+		g_object_unref(store);
+
+
+}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void supprimer_tre(rec r,char ch[])
+{
+
+	int recid;
+    	int jour;
+   	int mois;
+    	int annee;
+    	char tel[9] , avis[2];
+    	char desc[300];
+    	char idpark[5];
+
+
+	rec r2;
+	FILE *f,*g;
+	f=fopen("reclamations.txt","r");
+	g=fopen("dumb.txt","w");
+	if (f==NULL || g==NULL){
+		return;
+	}
+	else {
+		while(fscanf(f,"%d %d %d %d %s %s %s %s %s\n",&r2.recid,&r2.date.jour,&r2.date.mois,&r2.date.annee,r2.tel,r2.idpark,r2.avis,r2.desc,ch)!=EOF){
+			if (r.recid != r2.recid ||r.date.jour != r2.date.jour ||r.date.mois != r2.date.mois ||r.date.annee != r2.date.annee || strcmp(r.tel,r2.tel)!=0|| strcmp(r.idpark,r2.idpark)!=0 || strcmp(r.avis,r2.avis)!=0 || strcmp(r.desc,r2.desc)!=0)
+				fprintf(g,"%d %d %d %d %s %s %s %s %s\n",r2.recid,r2.date.jour,r2.date.mois,r2.date.annee,r2.tel,r2.idpark,r2.avis,r2.desc,ch);
+		}
+
+	} 
+	fclose(f);
+	fclose(g);
+	remove("reclamations.txt");
+	rename("dumb.txt","reclamations.txt");
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
