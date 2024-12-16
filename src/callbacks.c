@@ -281,6 +281,7 @@ ch4=lookup_widget(button,"checkbutton4_rec_mod");
 
          a=modifier("reclamations.txt", tel,recid,v,cha,ch,choix2);
        if(a==1){
+	afficherListeTrieeParAvis("reclamations.txt");
     choix2[0]=0;
     choix2[1]=0;
     choix2[2]=0;
@@ -388,6 +389,7 @@ on_button_A_clicked                    (GtkButton       *button,
 
      		a=ajouter("reclamations.txt", v,choix,ch);
 		   if(a==1){
+	afficherListeTrieeParAvis("reclamations.txt");
 		choix[0]=0;
 		choix[1]=0;
 		choix[2]=0;
@@ -519,7 +521,28 @@ on_treeview1_tree_don_cin_row_activated
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data)
 {
+GtkTreeIter iter;
+	
+	gchar* idpark;	
+	gchar* avis;
 
+
+	
+	
+	rec r;
+	GtkTreeModel *model = gtk_tree_view_get_model (treeview) ;
+
+	if (gtk_tree_model_get_iter(model, &iter, path) ){
+
+		gtk_tree_model_get(GTK_LIST_STORE(model), &iter, 0,&idpark,1,&avis,-1);
+		
+		strcpy(r.idpark,idpark);
+		strcpy(r.avis,avis) ;
+
+
+		supprimer_tretree(r);
+		afficher_rectree(treeview) ;
+}
 }
 
 
@@ -619,5 +642,16 @@ on_button52_bb_clicked                 (GtkButton       *button,
 	gtk_widget_destroy(AssurerSuppRec);
 	supp =1;
 
+}
+
+
+void
+on_affichertrec_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+GtkWidget *Affichagelisteparking,*treeview1_tree_par_tri;
+	Affichagelisteparking = lookup_widget(button,"Affichagelisteparking");
+	treeview1_tree_par_tri=lookup_widget(Affichagelisteparking,"treeview1_tree_par_tri");
+	 afficher_rectree (treeview1_tree_par_tri);
 }
 

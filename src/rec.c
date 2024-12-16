@@ -16,6 +16,12 @@ enum{
 	EDESC,
 	COLUMNS,
 };
+enum{
+
+	EIDPARKT,
+	EAVIST,
+	ECOLUMNS,
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -125,22 +131,22 @@ int modifier(char *filename, char tel[], int recid, rec nouv, char cha[], char c
     }
         while (fscanf(f, "%d %d %d %d %s %s %s %s %s\n",
                       &t.recid, &t.date.jour, &t.date.mois, &t.date.annee, 
-                      t.tel, t.idpark, t.avis, t.desc, ch) != EOF)
+                      t.tel, t.avis, t.idpark, t.desc, ch) != EOF)
         {
             if (recid == t.recid)
             {
                 fprintf(f2, "%d %d %d %d %s %s %s %s %s\n", 
                         t.recid, nouv.date.jour, nouv.date.mois, 
-                        nouv.date.annee, nouv.tel, nouv.idpark, 
-                        nouv.avis, nouv.desc, cha);
+                        nouv.date.annee, nouv.tel, nouv.avis, 
+                        nouv.idpark, nouv.desc, cha);
                 tr = 1; 
             }
             else
             {
                 fprintf(f2, "%d %d %d %d %s %s %s %s %s\n", 
                         t.recid, t.date.jour, t.date.mois, 
-                        t.date.annee, t.tel, t.idpark, 
-                        t.avis, t.desc, ch);
+                        t.date.annee, t.tel, t.avis, 
+                        t.idpark, t.desc, ch);
             }
         }
 
@@ -222,7 +228,7 @@ void afficherListeTrieeParAvis(char *filename) {
 
     while (fscanf(f, "%d %d %d %d %s %s %s %s %s\n",
                   &claim.recid, &claim.date.jour, &claim.date.mois, &claim.date.annee,
-                  claim.tel, claim.idpark, claim.avis, claim.desc, ch) != EOF) {
+                  claim.tel, claim.avis, claim.idpark, claim.desc, ch) != EOF) {
         int avis = atoi(claim.avis);
         int found = 0;
 
@@ -266,7 +272,7 @@ void afficherListeTrieeParAvis(char *filename) {
     }
 
     for (int i = 0; i < count; i++) {
-        fprintf(liste, "%s : %.1f\n", parkingList[i].idpark, parkingList[i].moyenneAvis);
+        fprintf(liste, "%s %.1f\n", parkingList[i].idpark, parkingList[i].moyenneAvis);
     }
 
     fclose(liste);
@@ -275,7 +281,7 @@ void afficherListeTrieeParAvis(char *filename) {
 }
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void afficher_rec (GtkWidget *liste,char ch[]){
 	GtkCellRenderer *renderer;
@@ -318,10 +324,10 @@ void afficher_rec (GtkWidget *liste,char ch[]){
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 
 		renderer = gtk_cell_renderer_text_new ();
-		column = gtk_tree_view_column_new_with_attributes("id park",renderer,"text",EIDPARK,NULL);
+		column = gtk_tree_view_column_new_with_attributes("id park",renderer,"text", EAVIS,NULL);
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 		renderer = gtk_cell_renderer_text_new ();
-		column = gtk_tree_view_column_new_with_attributes("avis",renderer,"text",EAVIS,NULL);
+		column = gtk_tree_view_column_new_with_attributes("avis",renderer,"text",EIDPARK,NULL);
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 
 		renderer = gtk_cell_renderer_text_new ();
@@ -387,5 +393,93 @@ void supprimer_tre(rec r,char ch[])
 	rename("dumb.txt","reclamations.txt");
 }
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void afficher_rectree (GtkWidget *liste){
+	GtkCellRenderer *renderer;
+	GtkTreeViewColumn *column;
+	GtkTreeIter iter ;
+	GtkListStore *store;
+    	  
+
+
+    	char idpark[5];
+    	char avis[4];
+
+	store =NULL;
+
+
+	FILE *f;
+	store=gtk_tree_view_get_model(liste);
+	if (store==NULL){
+
+
+		renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("id park",renderer,"text",EIDPARKT ,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+			renderer = gtk_cell_renderer_text_new ();
+		column = gtk_tree_view_column_new_with_attributes("avis",renderer,"text",EAVIST,NULL);
+		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
+
+	}
+	store=gtk_list_store_new (ECOLUMNS ,G_TYPE_STRING ,G_TYPE_STRING);
+	f=fopen("parking_trie.txt", "r");
+	if (f==NULL){
+		return;
+	}
+	else {
+		f=fopen("parking_trie.txt", "a+");
+		while (fscanf(f,"%s %s\n",idpark,avis)!=EOF){
+
+			gtk_list_store_append(store,&iter);
+			gtk_list_store_set(store ,&iter ,EAVIST,avis,EIDPARKT,idpark,-1);
+	}
+		fclose(f);
+		gtk_tree_view_set_model(GTK_TREE_VIEW(liste),GTK_TREE_MODEL(store));
+		g_object_unref(store);
+
+
+}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void supprimer_tretree(rec r)
+{
+
+	
+    	char avis[2];
+    	char idpark[5];
+
+
+	rec r2;
+	FILE *f,*g;
+	f=fopen("parking_trie.txt","r");
+	g=fopen("dumb.txt","w");
+	if (f==NULL || g==NULL){
+		return;
+	}
+	else {
+		while(fscanf(f,"%s %s\n",r2.idpark,r2.avis)!=EOF){
+			if ( strcmp(r.idpark,r2.idpark)!=0 || strcmp(r.avis,r2.avis)!=0 )
+				fprintf(g,"%s %s\n",r2.idpark,r2.avis);
+		}
+
+	} 
+	fclose(f);
+	fclose(g);
+	remove("parking_trie.txt");
+	rename("dumb.txt","parking_trie.txt");
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 

@@ -1019,7 +1019,7 @@
 	  <property name="can_focus">True</property>
 	  <property name="editable">True</property>
 	  <property name="visibility">True</property>
-	  <property name="max_length">8</property>
+	  <property name="max_length">300</property>
 	  <property name="text" translatable="yes"></property>
 	  <property name="has_frame">True</property>
 	  <property name="invisible_char">•</property>
@@ -1246,7 +1246,7 @@
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 31 1 10 10</property>
+	  <property name="adjustment">1 1 31 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">232</property>
@@ -1266,7 +1266,7 @@
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 12 1 10 10</property>
+	  <property name="adjustment">1 1 12 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">312</property>
@@ -1483,30 +1483,6 @@
       </child>
 
       <child>
-	<widget class="GtkComboBox" id="combobox1_idM">
-	  <property name="width_request">184</property>
-	  <property name="height_request">32</property>
-	  <property name="visible">True</property>
-	  <property name="items" translatable="yes">
-1
-2
-3
-4
-5
-6
-7
-8
-9</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">232</property>
-	  <property name="y">120</property>
-	</packing>
-      </child>
-
-      <child>
 	<widget class="GtkSpinButton" id="spinbutton9_uu">
 	  <property name="width_request">60</property>
 	  <property name="height_request">27</property>
@@ -1606,6 +1582,27 @@
 	<packing>
 	  <property name="x">352</property>
 	  <property name="y">528</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBox" id="combobox1_idM">
+	  <property name="width_request">184</property>
+	  <property name="height_request">32</property>
+	  <property name="visible">True</property>
+	  <property name="items" translatable="yes">A
+B
+C
+D
+E
+F
+</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">232</property>
+	  <property name="y">120</property>
 	</packing>
       </child>
     </widget>
@@ -1792,7 +1789,7 @@
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 100 1 10 10</property>
+	  <property name="adjustment">1 1 31 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">216</property>
@@ -1812,7 +1809,7 @@
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">1 0 100 1 10 10</property>
+	  <property name="adjustment">1 1 12 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">312</property>
@@ -2014,7 +2011,7 @@
 	  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 	  <property name="snap_to_ticks">False</property>
 	  <property name="wrap">False</property>
-	  <property name="adjustment">2000 2000 5000 1 10 10</property>
+	  <property name="adjustment">2000 2000 3000 1 10 10</property>
 	</widget>
 	<packing>
 	  <property name="x">400</property>
@@ -2099,51 +2096,6 @@
 	<packing>
 	  <property name="x">456</property>
 	  <property name="y">544</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkComboBox" id="combobox2_reclamationA">
-	  <property name="width_request">188</property>
-	  <property name="height_request">31</property>
-	  <property name="visible">True</property>
-	  <property name="items" translatable="yes">
-1
-2
-3
-4
-5
-</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">223</property>
-	  <property name="y">276</property>
-	</packing>
-      </child>
-
-      <child>
-	<widget class="GtkComboBox" id="combobox1_Areclamation">
-	  <property name="width_request">179</property>
-	  <property name="height_request">31</property>
-	  <property name="visible">True</property>
-	  <property name="items" translatable="yes">
-1
-2
-3
-4
-5
-6
-7
-8
-9</property>
-	  <property name="add_tearoffs">False</property>
-	  <property name="focus_on_click">True</property>
-	</widget>
-	<packing>
-	  <property name="x">217</property>
-	  <property name="y">121</property>
 	</packing>
       </child>
 
@@ -2260,6 +2212,48 @@
 	<packing>
 	  <property name="x">352</property>
 	  <property name="y">520</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBox" id="combobox2_reclamationA">
+	  <property name="width_request">188</property>
+	  <property name="height_request">31</property>
+	  <property name="visible">True</property>
+	  <property name="items" translatable="yes">
+1
+2
+3
+4
+5
+</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">223</property>
+	  <property name="y">276</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkComboBox" id="combobox1_Areclamation">
+	  <property name="width_request">184</property>
+	  <property name="height_request">32</property>
+	  <property name="visible">True</property>
+	  <property name="items" translatable="yes">A
+B
+C
+D
+E
+F
+</property>
+	  <property name="add_tearoffs">False</property>
+	  <property name="focus_on_click">True</property>
+	</widget>
+	<packing>
+	  <property name="x">216</property>
+	  <property name="y">120</property>
 	</packing>
       </child>
     </widget>
@@ -3151,6 +3145,24 @@
 	</widget>
 	<packing>
 	  <property name="x">232</property>
+	  <property name="y">32</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="GtkButton" id="affichertrec">
+	  <property name="width_request">104</property>
+	  <property name="height_request">29</property>
+	  <property name="visible">True</property>
+	  <property name="can_focus">True</property>
+	  <property name="label" translatable="yes">afficher</property>
+	  <property name="use_underline">True</property>
+	  <property name="relief">GTK_RELIEF_NORMAL</property>
+	  <property name="focus_on_click">True</property>
+	  <signal name="clicked" handler="on_affichertrec_clicked" last_modification_time="Mon, 16 Dec 2024 16:58:26 GMT"/>
+	</widget>
+	<packing>
+	  <property name="x">568</property>
 	  <property name="y">32</property>
 	</packing>
       </child>

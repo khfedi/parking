@@ -509,13 +509,13 @@ create_Modificationunrec (void)
   GtkWidget *label_descM;
   GtkWidget *label_M;
   GtkWidget *label260_rec_M;
-  GtkWidget *combobox1_idM;
   GtkObject *spinbutton9_uu_adj;
   GtkWidget *spinbutton9_uu;
   GtkWidget *checkbutton1_rec_mod;
   GtkWidget *combobox2_AMM;
   GtkWidget *checkbutton3_rec_mod;
   GtkWidget *checkbutton4_rec_mod;
+  GtkWidget *combobox1_idM;
 
   Modificationunrec = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (Modificationunrec), _("Modification d'un reclamation"));
@@ -528,7 +528,7 @@ create_Modificationunrec (void)
   gtk_widget_show (entry1_descnew);
   gtk_fixed_put (GTK_FIXED (fixed100), entry1_descnew, 240, 312);
   gtk_widget_set_size_request (entry1_descnew, 368, 120);
-  gtk_entry_set_max_length (GTK_ENTRY (entry1_descnew), 8);
+  gtk_entry_set_max_length (GTK_ENTRY (entry1_descnew), 300);
   gtk_entry_set_invisible_char (GTK_ENTRY (entry1_descnew), 8226);
 
   return3 = gtk_button_new ();
@@ -587,13 +587,13 @@ create_Modificationunrec (void)
   gtk_fixed_put (GTK_FIXED (fixed100), label266_NumtelM, 88, 184);
   gtk_widget_set_size_request (label266_NumtelM, 112, 24);
 
-  spinbutton5_ff_adj = gtk_adjustment_new (1, 0, 31, 1, 10, 10);
+  spinbutton5_ff_adj = gtk_adjustment_new (1, 1, 31, 1, 10, 10);
   spinbutton5_ff = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton5_ff_adj), 1, 0);
   gtk_widget_show (spinbutton5_ff);
   gtk_fixed_put (GTK_FIXED (fixed100), spinbutton5_ff, 232, 224);
   gtk_widget_set_size_request (spinbutton5_ff, 60, 27);
 
-  spinbutton6_yy_adj = gtk_adjustment_new (1, 0, 12, 1, 10, 10);
+  spinbutton6_yy_adj = gtk_adjustment_new (1, 1, 12, 1, 10, 10);
   spinbutton6_yy = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton6_yy_adj), 1, 0);
   gtk_widget_show (spinbutton6_yy);
   gtk_fixed_put (GTK_FIXED (fixed100), spinbutton6_yy, 312, 224);
@@ -642,21 +642,6 @@ create_Modificationunrec (void)
   gtk_label_set_use_markup (GTK_LABEL (label260_rec_M), TRUE);
   gtk_misc_set_alignment (GTK_MISC (label260_rec_M), 0.5, 0.48);
 
-  combobox1_idM = gtk_combo_box_new_text ();
-  gtk_widget_show (combobox1_idM);
-  gtk_fixed_put (GTK_FIXED (fixed100), combobox1_idM, 232, 120);
-  gtk_widget_set_size_request (combobox1_idM, 184, 32);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), "");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("1"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("2"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("3"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("4"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("5"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("6"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("7"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("8"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("9"));
-
   spinbutton9_uu_adj = gtk_adjustment_new (2000, 2000, 3000, 1, 10, 10);
   spinbutton9_uu = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton9_uu_adj), 1, 0);
   gtk_widget_show (spinbutton9_uu);
@@ -688,6 +673,17 @@ create_Modificationunrec (void)
   gtk_widget_show (checkbutton4_rec_mod);
   gtk_fixed_put (GTK_FIXED (fixed100), checkbutton4_rec_mod, 352, 528);
   gtk_widget_set_size_request (checkbutton4_rec_mod, 118, 24);
+
+  combobox1_idM = gtk_combo_box_new_text ();
+  gtk_widget_show (combobox1_idM);
+  gtk_fixed_put (GTK_FIXED (fixed100), combobox1_idM, 232, 120);
+  gtk_widget_set_size_request (combobox1_idM, 184, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("A"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("B"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("C"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("D"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("E"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_idM), _("F"));
 
   g_signal_connect ((gpointer) return3, "clicked",
                     G_CALLBACK (on_return3_clicked),
@@ -737,12 +733,12 @@ create_Modificationunrec (void)
   GLADE_HOOKUP_OBJECT (Modificationunrec, label_descM, "label_descM");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label_M, "label_M");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label260_rec_M, "label260_rec_M");
-  GLADE_HOOKUP_OBJECT (Modificationunrec, combobox1_idM, "combobox1_idM");
   GLADE_HOOKUP_OBJECT (Modificationunrec, spinbutton9_uu, "spinbutton9_uu");
   GLADE_HOOKUP_OBJECT (Modificationunrec, checkbutton1_rec_mod, "checkbutton1_rec_mod");
   GLADE_HOOKUP_OBJECT (Modificationunrec, combobox2_AMM, "combobox2_AMM");
   GLADE_HOOKUP_OBJECT (Modificationunrec, checkbutton3_rec_mod, "checkbutton3_rec_mod");
   GLADE_HOOKUP_OBJECT (Modificationunrec, checkbutton4_rec_mod, "checkbutton4_rec_mod");
+  GLADE_HOOKUP_OBJECT (Modificationunrec, combobox1_idM, "combobox1_idM");
 
   return Modificationunrec;
 }
@@ -778,13 +774,13 @@ create_AjouterRec (void)
   GtkWidget *hbox7;
   GtkWidget *image25;
   GtkWidget *label31;
-  GtkWidget *combobox2_reclamationA;
-  GtkWidget *combobox1_Areclamation;
   GtkWidget *checkbutton5_rec_A;
   GtkWidget *checkbutton7_rec_A;
   GtkWidget *label260_rec_A;
   GtkWidget *checkbutton6_rec_A;
   GtkWidget *checkbutton8_rec_A;
+  GtkWidget *combobox2_reclamationA;
+  GtkWidget *combobox1_Areclamation;
 
   AjouterRec = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (AjouterRec), _("Ajouter Rec"));
@@ -835,13 +831,13 @@ create_AjouterRec (void)
   gtk_widget_set_size_request (label263_NumtelA, 112, 32);
   gtk_label_set_line_wrap (GTK_LABEL (label263_NumtelA), TRUE);
 
-  spinbutton3_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton3_adj = gtk_adjustment_new (1, 1, 31, 1, 10, 10);
   spinbutton3 = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton3_adj), 1, 0);
   gtk_widget_show (spinbutton3);
   gtk_fixed_put (GTK_FIXED (fixed130), spinbutton3, 216, 232);
   gtk_widget_set_size_request (spinbutton3, 60, 27);
 
-  spinbutton4_adj = gtk_adjustment_new (1, 0, 100, 1, 10, 10);
+  spinbutton4_adj = gtk_adjustment_new (1, 1, 12, 1, 10, 10);
   spinbutton4 = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton4_adj), 1, 0);
   gtk_widget_show (spinbutton4);
   gtk_fixed_put (GTK_FIXED (fixed130), spinbutton4, 312, 232);
@@ -883,7 +879,7 @@ create_AjouterRec (void)
   gtk_widget_set_size_request (label_A, 248, 32);
   gtk_label_set_use_markup (GTK_LABEL (label_A), TRUE);
 
-  spinbutton_Areclamation_adj = gtk_adjustment_new (2000, 2000, 5000, 1, 10, 10);
+  spinbutton_Areclamation_adj = gtk_adjustment_new (2000, 2000, 3000, 1, 10, 10);
   spinbutton_Areclamation = gtk_spin_button_new (GTK_ADJUSTMENT (spinbutton_Areclamation_adj), 1, 0);
   gtk_widget_show (spinbutton_Areclamation);
   gtk_fixed_put (GTK_FIXED (fixed130), spinbutton_Areclamation, 400, 232);
@@ -911,32 +907,6 @@ create_AjouterRec (void)
   gtk_box_pack_start (GTK_BOX (hbox7), label31, FALSE, FALSE, 0);
   gtk_label_set_use_markup (GTK_LABEL (label31), TRUE);
 
-  combobox2_reclamationA = gtk_combo_box_new_text ();
-  gtk_widget_show (combobox2_reclamationA);
-  gtk_fixed_put (GTK_FIXED (fixed130), combobox2_reclamationA, 223, 276);
-  gtk_widget_set_size_request (combobox2_reclamationA, 188, 31);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), "");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("1"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("2"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("3"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("4"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("5"));
-
-  combobox1_Areclamation = gtk_combo_box_new_text ();
-  gtk_widget_show (combobox1_Areclamation);
-  gtk_fixed_put (GTK_FIXED (fixed130), combobox1_Areclamation, 217, 121);
-  gtk_widget_set_size_request (combobox1_Areclamation, 179, 31);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), "");
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("1"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("2"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("3"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("4"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("5"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("6"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("7"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("8"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("9"));
-
   checkbutton5_rec_A = gtk_check_button_new_with_mnemonic (_("Probl\303\250me de paiement "));
   gtk_widget_show (checkbutton5_rec_A);
   gtk_fixed_put (GTK_FIXED (fixed130), checkbutton5_rec_A, 104, 480);
@@ -962,6 +932,28 @@ create_AjouterRec (void)
   gtk_widget_show (checkbutton8_rec_A);
   gtk_fixed_put (GTK_FIXED (fixed130), checkbutton8_rec_A, 352, 520);
   gtk_widget_set_size_request (checkbutton8_rec_A, 118, 24);
+
+  combobox2_reclamationA = gtk_combo_box_new_text ();
+  gtk_widget_show (combobox2_reclamationA);
+  gtk_fixed_put (GTK_FIXED (fixed130), combobox2_reclamationA, 223, 276);
+  gtk_widget_set_size_request (combobox2_reclamationA, 188, 31);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), "");
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("1"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("2"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("3"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("4"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox2_reclamationA), _("5"));
+
+  combobox1_Areclamation = gtk_combo_box_new_text ();
+  gtk_widget_show (combobox1_Areclamation);
+  gtk_fixed_put (GTK_FIXED (fixed130), combobox1_Areclamation, 216, 120);
+  gtk_widget_set_size_request (combobox1_Areclamation, 184, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("A"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("B"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("C"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("D"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("E"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1_Areclamation), _("F"));
 
   g_signal_connect ((gpointer) home4, "clicked",
                     G_CALLBACK (on_home4_clicked),
@@ -1011,13 +1003,13 @@ create_AjouterRec (void)
   GLADE_HOOKUP_OBJECT (AjouterRec, hbox7, "hbox7");
   GLADE_HOOKUP_OBJECT (AjouterRec, image25, "image25");
   GLADE_HOOKUP_OBJECT (AjouterRec, label31, "label31");
-  GLADE_HOOKUP_OBJECT (AjouterRec, combobox2_reclamationA, "combobox2_reclamationA");
-  GLADE_HOOKUP_OBJECT (AjouterRec, combobox1_Areclamation, "combobox1_Areclamation");
   GLADE_HOOKUP_OBJECT (AjouterRec, checkbutton5_rec_A, "checkbutton5_rec_A");
   GLADE_HOOKUP_OBJECT (AjouterRec, checkbutton7_rec_A, "checkbutton7_rec_A");
   GLADE_HOOKUP_OBJECT (AjouterRec, label260_rec_A, "label260_rec_A");
   GLADE_HOOKUP_OBJECT (AjouterRec, checkbutton6_rec_A, "checkbutton6_rec_A");
   GLADE_HOOKUP_OBJECT (AjouterRec, checkbutton8_rec_A, "checkbutton8_rec_A");
+  GLADE_HOOKUP_OBJECT (AjouterRec, combobox2_reclamationA, "combobox2_reclamationA");
+  GLADE_HOOKUP_OBJECT (AjouterRec, combobox1_Areclamation, "combobox1_Areclamation");
 
   return AjouterRec;
 }
@@ -1336,6 +1328,7 @@ create_Affichagelisteparking (void)
   GtkWidget *image69;
   GtkWidget *label292;
   GtkWidget *label270;
+  GtkWidget *affichertrec;
 
   Affichagelisteparking = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (Affichagelisteparking), _("Affichage de la liste parking triees"));
@@ -1398,6 +1391,11 @@ create_Affichagelisteparking (void)
   gtk_widget_set_size_request (label270, 264, 32);
   gtk_label_set_use_markup (GTK_LABEL (label270), TRUE);
 
+  affichertrec = gtk_button_new_with_mnemonic (_("afficher"));
+  gtk_widget_show (affichertrec);
+  gtk_fixed_put (GTK_FIXED (fixed160), affichertrec, 568, 32);
+  gtk_widget_set_size_request (affichertrec, 104, 29);
+
   g_signal_connect ((gpointer) treeview1_tree_par_tri, "row_activated",
                     G_CALLBACK (on_treeview1_tree_don_cin_row_activated),
                     NULL);
@@ -1406,6 +1404,9 @@ create_Affichagelisteparking (void)
                     NULL);
   g_signal_connect ((gpointer) home7, "clicked",
                     G_CALLBACK (on_home7_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) affichertrec, "clicked",
+                    G_CALLBACK (on_affichertrec_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -1423,6 +1424,7 @@ create_Affichagelisteparking (void)
   GLADE_HOOKUP_OBJECT (Affichagelisteparking, image69, "image69");
   GLADE_HOOKUP_OBJECT (Affichagelisteparking, label292, "label292");
   GLADE_HOOKUP_OBJECT (Affichagelisteparking, label270, "label270");
+  GLADE_HOOKUP_OBJECT (Affichagelisteparking, affichertrec, "affichertrec");
 
   return Affichagelisteparking;
 }

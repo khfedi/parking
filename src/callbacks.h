@@ -169,3 +169,7 @@ on_checkbutton4_rec_mod_toggled        (GtkToggleButton *togglebutton,
 void
 on_button52_bb_clicked                 (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_affichertrec_clicked                (GtkButton       *button,
+                                        gpointer         user_data);

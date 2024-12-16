@@ -38,4 +38,6 @@ void add( int ,char tel[]);
 int pull( int ,char tel[]);
 void supprimer_tre(rec,char ch[]);
 void afficher_rec (GtkWidget *liste,char ch[]);
+void supprimer_tretree(rec);
+void afficher_rectree (GtkWidget *liste);
 #endif // POINT_H_INCLUDED
