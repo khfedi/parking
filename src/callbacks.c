@@ -190,8 +190,9 @@ on_button_rmod_clicked                 (GtkButton       *button,
 {
 	GtkWidget *ModificationR ,*Modificationunrec;
 	GtkWidget *input1, *input2;
-
+	GtkWidget *output;
 	char vide[2] = "";
+	char mot1[50] = "introuvable";
 
 	
 	char tel[9];int recid;
@@ -200,16 +201,21 @@ on_button_rmod_clicked                 (GtkButton       *button,
 	ModificationR=lookup_widget(button,"ModificationR");
 	input1 = lookup_widget(button, "entry5_nM");
         input2 = lookup_widget(button, "spinbutton9_idMM");
+	output=lookup_widget(button,"label257_mo");
 
 	strcpy(tel,gtk_entry_get_text(GTK_ENTRY(input1)));
 	 recid =gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (input2));
 
 	 r = chercher("reclamations.txt", tel,recid,ch);
 	if(strcmp(r.tel,"-1")!=0){
+	gtk_label_set_text(GTK_LABEL(output), vide);
 	add(recid,tel);
  	    Modificationunrec=create_Modificationunrec();
 	    gtk_widget_show(Modificationunrec);
 		gtk_widget_destroy(ModificationR);
+}
+   	else {   
+	gtk_label_set_text(GTK_LABEL(output), mot1);
 }
  }
 
@@ -243,6 +249,9 @@ on_button_Cmod_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
     char vide[2] = "";
+   char mot1[50] = "modifier avec succès";
+   char mot2[50] = "ECHEC de modif  ";
+	GtkWidget *output;
 int a;
 char tel[9];int recid;
 rec v;
@@ -267,7 +276,7 @@ ch1=lookup_widget(button,"checkbutton1_rec_mod");
 ch2=lookup_widget(button,"checkbutton2_rec_mod");
 ch3=lookup_widget(button,"checkbutton3_rec_mod");
 ch4=lookup_widget(button,"checkbutton4_rec_mod");
-
+output = lookup_widget(button, "label263_confrdvmb");
 
 	strcpy(v.desc,gtk_entry_get_text(GTK_ENTRY(input7)));
 	v.date.jour=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (input3));
@@ -297,8 +306,11 @@ ch4=lookup_widget(button,"checkbutton4_rec_mod");
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch2),FALSE);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch3),FALSE);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch4),FALSE);
-    
+        gtk_label_set_text(GTK_LABEL(output), mot1); 
     }
+	else { 
+		gtk_label_set_text(GTK_LABEL(output), mot2); 
+}
 		
 
 }
@@ -352,8 +364,11 @@ void
 on_button_A_clicked                    (GtkButton       *button,
                                         gpointer         user_data)
 {
- char vide[2] = "";
-
+ 
+	 char vide[2] = "";
+	char mot1[50] = "Ajout avec succès";
+   	 char mot2[50] = "ECHEC d'ajout  ";
+	GtkWidget *output;
 	GtkWidget *ch1,*ch2,*ch3,*ch4;
 
 
@@ -361,7 +376,7 @@ on_button_A_clicked                    (GtkButton       *button,
 	ch2=lookup_widget(button,"checkbutton6_rec_A");
 	ch3=lookup_widget(button,"checkbutton7_rec_A");
 	ch4=lookup_widget(button,"checkbutton8_rec_A");
-
+	output = lookup_widget(button, "label256");
 
     int a;
     rec v;
@@ -376,7 +391,7 @@ on_button_A_clicked                    (GtkButton       *button,
     input5 = lookup_widget(button, "spinbutton_Areclamation");
     input6 = lookup_widget(button, "combobox2_reclamationA");
     input7 = lookup_widget(button, "entry_descA");
-
+	
 
 	strcpy(v.desc,gtk_entry_get_text(GTK_ENTRY(input7)));
 	v.date.jour=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (input3));
@@ -405,9 +420,11 @@ on_button_A_clicked                    (GtkButton       *button,
 		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch2),FALSE);
 		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch3),FALSE);
 		    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(ch4),FALSE);
-   
-
+   			gtk_label_set_text(GTK_LABEL(output), mot1);
 		      }
+	else { 
+		gtk_label_set_text(GTK_LABEL(output), mot2); 
+}
 }
 
 
@@ -441,17 +458,19 @@ on_button_supp1_clicked                (GtkButton       *button,
                                         gpointer         user_data)
 {
 
-
+    char mot1[55] = "introuvable";
 char vide[2] = "";
 rec r;
 char tel[9];int recid;
 GtkWidget *input1,*input2;
+GtkWidget*output;
 GtkWidget *AssurerSuppRec;
 GtkWidget *SuppRec;
 
 SuppRec=lookup_widget(button,"SuppRec");
 input1=lookup_widget(button,"entry3_teltel");
     input2 = lookup_widget(button, "spinbutton8_oo");
+output=lookup_widget(button,"label259_supp");
 
 
 
@@ -462,11 +481,11 @@ if(strcmp(r.tel,"-1")!=0){
      AssurerSuppRec=create_AssurerSuppRec();
     gtk_widget_show(AssurerSuppRec);
 add(recid,tel);
+
 }
-
-
-
-
+	 else {
+		gtk_label_set_text(GTK_LABEL(output), mot1);
+}
 }
 
 
@@ -525,9 +544,6 @@ GtkTreeIter iter;
 	
 	gchar* idpark;	
 	gchar* avis;
-
-
-	
 	
 	rec r;
 	GtkTreeModel *model = gtk_tree_view_get_model (treeview) ;
@@ -538,8 +554,6 @@ GtkTreeIter iter;
 		
 		strcpy(r.idpark,idpark);
 		strcpy(r.avis,avis) ;
-
-
 		supprimer_tretree(r);
 		afficher_rectree(treeview) ;
 }
@@ -632,6 +646,7 @@ void
 on_button52_bb_clicked                 (GtkButton       *button,
                                         gpointer         user_data)
 {
+         
 	GtkWidget *AssurerSuppRec;
 	GtkWidget *SuppRec;
 	char tel[9];int recid;

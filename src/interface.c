@@ -513,7 +513,6 @@ create_Modificationunrec (void)
   GtkWidget *spinbutton5_ff;
   GtkObject *spinbutton6_yy_adj;
   GtkWidget *spinbutton6_yy;
-  GtkWidget *label263_confrdvmb;
   GtkWidget *label328;
   GtkWidget *label_M;
   GtkWidget *label260_rec_M;
@@ -530,6 +529,7 @@ create_Modificationunrec (void)
   GtkWidget *label_descM;
   GtkWidget *label_rm;
   GtkWidget *label266_NumtelM;
+  GtkWidget *label263_confrdvmb;
 
   Modificationunrec = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (Modificationunrec), _("Modification d'un reclamation"));
@@ -607,11 +607,6 @@ create_Modificationunrec (void)
   gtk_widget_show (spinbutton6_yy);
   gtk_fixed_put (GTK_FIXED (fixed100), spinbutton6_yy, 312, 224);
   gtk_widget_set_size_request (spinbutton6_yy, 60, 27);
-
-  label263_confrdvmb = gtk_label_new ("");
-  gtk_widget_show (label263_confrdvmb);
-  gtk_fixed_put (GTK_FIXED (fixed100), label263_confrdvmb, 456, 576);
-  gtk_widget_set_size_request (label263_confrdvmb, 192, 40);
 
   label328 = gtk_label_new ("");
   gtk_widget_show (label328);
@@ -709,6 +704,11 @@ create_Modificationunrec (void)
   gtk_widget_set_size_request (label266_NumtelM, 112, 24);
   gtk_label_set_use_markup (GTK_LABEL (label266_NumtelM), TRUE);
 
+  label263_confrdvmb = gtk_label_new ("");
+  gtk_widget_show (label263_confrdvmb);
+  gtk_fixed_put (GTK_FIXED (fixed100), label263_confrdvmb, 456, 576);
+  gtk_widget_set_size_request (label263_confrdvmb, 192, 40);
+
   g_signal_connect ((gpointer) return3, "clicked",
                     G_CALLBACK (on_return3_clicked),
                     NULL);
@@ -748,7 +748,6 @@ create_Modificationunrec (void)
   GLADE_HOOKUP_OBJECT (Modificationunrec, checkbutton2_rec_mod, "checkbutton2_rec_mod");
   GLADE_HOOKUP_OBJECT (Modificationunrec, spinbutton5_ff, "spinbutton5_ff");
   GLADE_HOOKUP_OBJECT (Modificationunrec, spinbutton6_yy, "spinbutton6_yy");
-  GLADE_HOOKUP_OBJECT (Modificationunrec, label263_confrdvmb, "label263_confrdvmb");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label328, "label328");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label_M, "label_M");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label260_rec_M, "label260_rec_M");
@@ -764,6 +763,7 @@ create_Modificationunrec (void)
   GLADE_HOOKUP_OBJECT (Modificationunrec, label_descM, "label_descM");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label_rm, "label_rm");
   GLADE_HOOKUP_OBJECT (Modificationunrec, label266_NumtelM, "label266_NumtelM");
+  GLADE_HOOKUP_OBJECT (Modificationunrec, label263_confrdvmb, "label263_confrdvmb");
 
   return Modificationunrec;
 }
@@ -1218,6 +1218,7 @@ create_AssurerSuppRec (void)
   GSList *radiobutton_A_group = NULL;
   GtkWidget *radiobutton_supp;
   GtkWidget *label_Tsupp;
+  GtkWidget *label330_fe;
 
   AssurerSuppRec = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (AssurerSuppRec), _("Assurer Supp Rec"));
@@ -1310,6 +1311,11 @@ create_AssurerSuppRec (void)
   gtk_widget_set_size_request (label_Tsupp, 168, 24);
   gtk_label_set_use_markup (GTK_LABEL (label_Tsupp), TRUE);
 
+  label330_fe = gtk_label_new ("");
+  gtk_widget_show (label330_fe);
+  gtk_fixed_put (GTK_FIXED (fixed150), label330_fe, 136, 232);
+  gtk_widget_set_size_request (label330_fe, 248, 40);
+
   g_signal_connect ((gpointer) return6, "clicked",
                     G_CALLBACK (on_return6_clicked),
                     NULL);
@@ -1347,6 +1353,7 @@ create_AssurerSuppRec (void)
   GLADE_HOOKUP_OBJECT (AssurerSuppRec, radiobutton_A, "radiobutton_A");
   GLADE_HOOKUP_OBJECT (AssurerSuppRec, radiobutton_supp, "radiobutton_supp");
   GLADE_HOOKUP_OBJECT (AssurerSuppRec, label_Tsupp, "label_Tsupp");
+  GLADE_HOOKUP_OBJECT (AssurerSuppRec, label330_fe, "label330_fe");
 
   return AssurerSuppRec;
 }

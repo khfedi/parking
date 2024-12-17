@@ -36,6 +36,7 @@ int ajouter(char *filename, rec d, int choix[], char ch[])
         if (strlen(d.tel) != 8) {
 	return 0;
     }
+ if (strcmp(d.desc,"")==0){return 0;}
 
     FILE *f = fopen(filename, "a+");  
     if (f != NULL)
@@ -106,6 +107,16 @@ void add( int recid,char tel[9]){
 int modifier(char *filename, char tel[], int recid, rec nouv, char cha[], char ch[], int choix2[])
 {
     
+    for (int i = 0; nouv.tel[i] != '\0'; i++) {
+    if (nouv.tel[i] < '0' || nouv.tel[i] > '9') { 
+        return 0;
+    }
+}
+        if (strlen(nouv.tel) != 8) {
+	return 0;
+    }
+  if (strcmp(nouv.desc,"")==0){return 0;}
+
 
     rec t;
     int tr = 0;
